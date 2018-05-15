@@ -5,37 +5,14 @@ Based on the Avito Kaggle challenge https://www.kaggle.com/c/avito-demand-predic
 
 The challenge includes text descriptions of the products as well as some properties of the internet listing. There are also images associated with some listing, but I do not use these currently.
 
-Main challenges:
+## Main challenges
+
 - features have to be extracted from title and descriptions and are the only meaningful predictors
 - language is Russian and letters are cyrillic
 - more than 1e6 listings with long text descriptions demand for memory efficient coding
 - most outcomes of the training examples are 0
 
-Tools used:
-- R
-- text analysis with word2vec and tf-idf
-- mlr package to benchmark several machine learning algorithms that have worked well on similar problems
-- eXtreme Gradient Boosting for the submission data set
-
-# Feature
-# run_benchmarking.R
-
-In the benchmarking, several algorithms are tested, including
-- Generalised Linear Regression,
-- eXtreme Gradient Boosting,
-- Gradient Boosting,
-- Extreme Learning Machine for Single Hidden Layer Feedforward Neural Networks,
-- Fast k-Nearest Neighbor.
-
-For this, only part of the data is used.
-
-# run_xgboost.R
-
-So far, eXtreme Gradient Boosting shows the most promising results and is thus further explored using hyperparameter tuning in run_benchmarking. Here, all of the data is used, which makes it necessary to work with sparce matrices and code in a memory efficient way.
-
-
-
-This repo so far includes
+## File structure
 
     ├── 0_setup.R                     # Prepare your R session
     ├── 1_data.R                      # Load data and initial wrangling
@@ -49,7 +26,35 @@ This repo so far includes
     ├── submissions
       ├── empty                      # Kaggle does not allow to share this
       
-Next steps:
+## Tools used
+
+- R
+- text analysis with word2vec and tf-idf
+- mlr package to benchmark several machine learning algorithms that have worked well on similar problems
+- eXtreme Gradient Boosting for the submission data set
+
+## Feature Extractation
+
+The most relevant information is hidden in the listings' titles and description, which are in cyrillic. I clean the strings, tokenize and build a dictionary using the word stems. Tf-idf is used to determine the importance of the words in the corpus. The most relevant are used as predictors.
+
+## run_benchmarking.R
+
+In the benchmarking, several algorithms are tested, including
+- Generalised Linear Regression,
+- eXtreme Gradient Boosting,
+- Gradient Boosting,
+- Extreme Learning Machine for Single Hidden Layer Feedforward Neural Networks,
+- Fast k-Nearest Neighbor.
+
+For this, only part of the data is used.
+
+## run_xgboost.R
+
+So far, eXtreme Gradient Boosting shows the most promising results and is thus further explored using hyperparameter tuning in run_benchmarking. Here, all of the data is used, which makes it necessary to work with sparce matrices and code in a memory efficient way.
+
+
+## Next steps
+
 - include images in the script
 - more hyperparameter tuning
 - handle excess 0's (maybe by using a binary classifier first?)
