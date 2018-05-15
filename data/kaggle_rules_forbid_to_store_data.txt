@@ -1,0 +1,1 @@
+Kaggle rules forbid to store data, you can download it from https://www.kaggle.com/c/avito-demand-prediction
