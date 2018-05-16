@@ -19,8 +19,10 @@ The challenge includes text descriptions of the products as well as some propert
     ├── 2_text.R                      # Prepare text with word2vec and tfidf
     ├── 3_benchmarking_mlr.R          # Compare algorithms using mlr wrappers
     ├── 4_xgboost.R                   # Create submission using xgboost
+    ├── 5_neural_net.R                # Create submission using neural net
     ├── run_benchmarking.R            # Source the benchmarking scripts
     ├── run_xgboost.R                 # Source the xgboost scripts
+    ├── run_neural_net.R              # Source the neural net scripts
     ├── data
       ├── empty                      # Kaggle does not allow to share this
     ├── submissions
@@ -51,6 +53,10 @@ For this, only part of the data is used.
 ## run_xgboost.R
 
 So far, eXtreme Gradient Boosting shows the most promising results and is thus further explored using hyperparameter tuning in run_benchmarking. Here, all of the data is used, which makes it necessary to work with sparce matrices and code in a memory efficient way.
+
+## run_neural_net.R
+
+Neural net also looks promising. Not yet as good as xgboost but there is still some hypeparameter tuning left that could improve. Looks promising.
 
 
 ## Next steps
